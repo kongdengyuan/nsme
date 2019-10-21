@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e 
 export GIT_SSL_NO_VERIFY=1 ## solve ssl error
 
 CURRENT_DIR=$(cd "$(dirname "$0")"; pwd)
