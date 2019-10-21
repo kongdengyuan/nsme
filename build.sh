@@ -6,7 +6,7 @@ CURRENT_DIR=$(cd "$(dirname "$0")"; pwd)
 
 cd $CURRENT_DIR
 
-[ -d $CURRENT_DIR/x4-s4one ] && git pull || git clone https://github.wdf.sap.corp/BIG/x4-s4one.git
+[ -d x4-s4one ] && git pull || git clone https://github.wdf.sap.corp/BIG/x4-s4one.git
 
 [ -e $CURRENT_DIR/x4-s4one/start-x4-s4one.sh ] || cp start-x4-s4one.sh $CURRENT_DIR/x4-s4one 
 
