@@ -1,0 +1,24 @@
+version: "3"
+services:
+    x4_s4one-pgdb:
+        image: registry.kkops.cc/x4-pg:v2
+        ports:
+            - "5432:5432"
+    x4_s4one:
+        image: registry.kkops.cc/x4-s4one:v_1015
+        ports:
+            - "3000:3000"
+        environment:
+            - DB_HOST=10.58.113.230
+            - DB_NAME=X4DB
+        volumes:
+            - /var/log/x4_s4one:/var/log/x4_s4one
+        restart: on-failure
+        healthcheck:
+          test: ["CMD-SHELL", "netstat -tnlp | grep 3000"]
+          interval: 10s
+          timeout: 10s
+          retries: 5
+        depends_on:
+            -  x4_s4one-pgdb
+
