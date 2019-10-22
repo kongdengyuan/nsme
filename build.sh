@@ -12,6 +12,8 @@ cd $CURRENT_DIR
 
 TAG=`cd x4-s4one && git log | head -1 | awk '{print $2}' | cut -c -8`
 
+## If prompt permission denied issues , try to usermod -a -G docker username
+
 docker build -t registry.kkops.cc/x4-s4one:$TAG . 
 
 # docker push registry.kkops.cc/x4-s4one:$TAG  
