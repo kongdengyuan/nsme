@@ -7,7 +7,7 @@ else
     apt-get install \
     apt-transport-https \
     ca-certificates \
-    curl \
+    curl git \
     gnupg-agent \
     software-properties-common -y
 
