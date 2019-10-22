@@ -19,7 +19,7 @@ docker build -t registry.kkops.cc/x4-s4one:$TAG .
 # docker push registry.kkops.cc/x4-s4one:$TAG  
 if [ $? -eq 0 ];then 
    echo "Begin start NSME"
-   docker-compose up -d && echo "Start x4-s4one first need to import some pkg, so maybe take 20-30 minutes to up"
+   docker-compose up -d && echo "\e[1;32mStart x4-s4one first need to import some pkg, so maybe take 20-30 minutes to up\e[0m"
  else 
    echo "Build x4-s4one failed" 
    exit 2
