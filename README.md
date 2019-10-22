@@ -1,3 +1,10 @@
 # NSME
 This script for install NSME env 
-OS: Ubuntu 16+
+##Requirements
+OS: Ubuntu 16+ , need to install docker, docker-compose component
+
+#Excute install docker script 
+
+./install_docker.sh
+
+./build.sh 
