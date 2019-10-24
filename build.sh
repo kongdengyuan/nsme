@@ -20,7 +20,7 @@ cd $CURRENT_DIR
 ## check x4-app-package.json value 
 [ cat $CURRENT_DIR/x4-s4one/src/s4one/base/x4-app-package.json | grep $BYDURL ] && \
   echo -e "\e[1;32mx4-app-package.json BYDURL is correct \e[0m" || \
-  sed -i 's#"value": "pro.*$#"value": "https://qch-cust427.dev.sapbydesign.com"#' $CURRENT_DIR/x4-s4one/src/s4one/base x4-app-package.json && echo -e "\e[1;32m repalce x4-app-package.json BYDURL success \e[0m"
+  sed -i 's#"value": "pro.*$#"value": "https://qch-cust427.dev.sapbydesign.com"#' $CURRENT_DIR/x4-s4one/src/s4one/base/x4-app-package.json && echo -e "\e[1;32m repalce x4-app-package.json BYDURL success \e[0m"
 
 ## Get the latest commit id  
 TAG=$(cd x4-s4one && git log | head -1 | awk '{print $2}' | cut -c -8)
