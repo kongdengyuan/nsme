@@ -22,11 +22,17 @@ docker build -t registry.kkops.cc/x4-s4one:$TAG .
 # docker push registry.kkops.cc/x4-s4one:$TAG
 if [ $? -eq 0 ];then
    echo -e "\e[1;32mBegin start NSME\e[0m"
-   echo $TAG
+
+  [ docker ps | grep nsme >&/dev/null ] && docker ps | grep nsme | awk '{print $1}' | xargs docker rm -f 
+
    sed -i "s#registry.kkops.cc/x4-s4one:TAG#registry.kkops.cc/x4-s4one:${TAG}#" docker-compose.yaml
-   docker-compose up -d && echo "\e[1;32mStart x4-s4one first need to import some pkg, so maybe take 20-30 minutes to up\e[0m" && \
+
+   docker-compose up -d && echo -e "\e[1;32mStart x4-s4one first need to import some pkg, so maybe take 20-30 minutes to up\e[0m" && \
+
     sed -i "s#registry.kkops.cc/x4-s4one:${TAG}#registry.kkops.cc/x4-s4one:TAG#" docker-compose.yaml
+
  else
+
    echo -e "\e[1;31mBuild x4-s4one failed\e[0m"
    exit 2
 fi
