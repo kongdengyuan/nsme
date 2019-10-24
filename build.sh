@@ -7,16 +7,25 @@ CURRENT_DIR=$(
   pwd
 )
 
+BYDURL="https://qch-cust427.dev.sapbydesign.com"
+
 cd $CURRENT_DIR
 
+## check x4-s4one dir 
 [ -d x4-s4one ] && git pull || git clone https://github.wdf.sap.corp/BIG/x4-s4one.git
 
+## Copy start script to x4-s4one
 [ -e $CURRENT_DIR/x4-s4one/start-x4-s4one.sh ] || cp start-x4-s4one.sh $CURRENT_DIR/x4-s4one
 
+## check x4-app-package.json value 
+[ cat $CURRENT_DIR/x4-s4one/src/s4one/base x4-app-package.json | grep $BYDURL ] && \
+  echo -e "\e[1;32mx4-app-package.json BYDURL is correct \e[0m" || \
+  sed -i 's#"value": "pro.*$#"value": "https://qch-cust427.dev.sapbydesign.com"#' $CURRENT_DIR/x4-s4one/src/s4one/base x4-app-package.json && echo -e "\e[1;32m repalce x4-app-package.json BYDURL success \e[0m"
+
+## Get the latest commit id  
 TAG=$(cd x4-s4one && git log | head -1 | awk '{print $2}' | cut -c -8)
 
 ## If prompt permission denied issues , try to usermod -a -G docker username
-
 docker build -t registry.kkops.cc/x4-s4one:$TAG .
 
 # docker push registry.kkops.cc/x4-s4one:$TAG

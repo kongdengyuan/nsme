@@ -5,11 +5,11 @@ services:
         ports:
             - "5432:5432"
     x4_s4one:
-        image: registry.kkops.cc/x4-s4one:TAG
+        image: registry.kkops.cc/x4-s4one:e380b17a
         ports:
             - "3000:3000"
         environment:
-            - DB_HOST=`hostname -i`
+            - DB_HOST=10.58.113.230
             - DB_NAME=X4DB
         volumes:
             - /var/log/x4_s4one:/var/log/x4_s4one
