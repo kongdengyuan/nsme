@@ -18,7 +18,7 @@ cd $CURRENT_DIR
 [ -e $CURRENT_DIR/x4-s4one/start-x4-s4one.sh ] || cp start-x4-s4one.sh $CURRENT_DIR/x4-s4one
 
 ## check x4-app-package.json value 
-[ cat $CURRENT_DIR/x4-s4one/src/s4one/base x4-app-package.json | grep $BYDURL ] && \
+[ cat $CURRENT_DIR/x4-s4one/src/s4one/base/x4-app-package.json | grep $BYDURL ] && \
   echo -e "\e[1;32mx4-app-package.json BYDURL is correct \e[0m" || \
   sed -i 's#"value": "pro.*$#"value": "https://qch-cust427.dev.sapbydesign.com"#' $CURRENT_DIR/x4-s4one/src/s4one/base x4-app-package.json && echo -e "\e[1;32m repalce x4-app-package.json BYDURL success \e[0m"
 
