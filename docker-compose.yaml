@@ -5,7 +5,7 @@ services:
         ports:
             - "5432:5432"
     x4_s4one:
-        image: registry.kkops.cc/x4-s4one:$TAG
+        image: registry.kkops.cc/x4-s4one:TAG
         ports:
             - "3000:3000"
         environment:
