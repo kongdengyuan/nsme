@@ -23,7 +23,7 @@ cd $CURRENT_DIR
   sed -i 's#"value": "pro.*$#"value": "https://qch-cust427.dev.sapbydesign.com"#' $CURRENT_DIR/x4-s4one/src/s4one/base/x4-app-package.json && echo -e "\e[1;32m repalce x4-app-package.json BYDURL success \e[0m"
 
 ## Get the latest commit id  
-TAG=$(cd x4-s4one && git log | head -1 | awk '{print $2}' | cut -c -8)
+export TAG=$(cd x4-s4one && git log | head -1 | awk '{print $2}' | cut -c -8)
 
 ## If prompt permission denied issues , try to usermod -a -G docker username
 docker build -t registry.kkops.cc/x4-s4one:$TAG .
@@ -32,13 +32,7 @@ docker build -t registry.kkops.cc/x4-s4one:$TAG .
 if [ $? -eq 0 ];then
    echo -e "\e[1;32mBegin start NSME\e[0m"
 
-  [ docker ps | grep nsme >&/dev/null ] && docker ps | grep nsme | awk '{print $1}' | xargs docker rm -f 
-
-   sed -i "s#registry.kkops.cc/x4-s4one:TAG#registry.kkops.cc/x4-s4one:${TAG}#" docker-compose.yaml
-
-   docker-compose up -d && echo -e "\e[1;32mStart x4-s4one first need to import some pkg, so maybe take 20-30 minutes to up\e[0m" && \
-
-    sed -i "s#registry.kkops.cc/x4-s4one:${TAG}#registry.kkops.cc/x4-s4one:TAG#" docker-compose.yaml
+  [ docker ps | grep nsme >&/dev/null ] && docker ps | grep nsme | awk '{print $1}' | xargs docker rm -f || docker-compose up -d && echo -e "\e[1;32mStart x4-s4one first need to import some pkg, so maybe take 20-30 minutes to up\e[0m"
 
  else
 
