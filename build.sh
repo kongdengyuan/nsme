@@ -1,5 +1,8 @@
 #!/bin/bash
 set -ex
+## Check docker component 
+
+./install_docker.sh 
 
 export GIT_SSL_NO_VERIFY=1 ## solve ssl error
 export  HOST_IP=`ip a | grep 'inet ' | grep -v '127.0.0.1\|172.*' | awk '{print $2}' | awk -F"/" '{print $1}'`
