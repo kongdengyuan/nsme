@@ -9,7 +9,7 @@ services:
         ports:
             - "3000:3000"
         environment:
-            - DB_HOST=${hostname -i}
+            - DB_HOST=${HOST_IP}
             - DB_NAME=X4DB
         volumes:
             - /var/log/x4_s4one:/var/log/x4_s4one
