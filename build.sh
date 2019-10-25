@@ -1,13 +1,14 @@
 #!/bin/bash
 set -ex
+
 export GIT_SSL_NO_VERIFY=1 ## solve ssl error
+export  HOST_IP=`ip a | grep 'inet ' | grep -v '127.0.0.1\|172.*' | awk '{print $2}' | awk -F"/" '{print $1}'`
+BYDURL="https://qch-cust427.dev.sapbydesign.com"
 
 CURRENT_DIR=$(
   cd "$(dirname "$0")"
   pwd
 )
-
-BYDURL="https://qch-cust427.dev.sapbydesign.com"
 
 cd $CURRENT_DIR
 
