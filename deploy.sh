@@ -35,7 +35,7 @@ export TAG=$(cd x4-s4one && git log | head -1 | awk '{print $2}' | cut -c -8)
 ## If prompt permission denied issues , try to usermod -a -G docker username
 docker build -t registry.kkops.cc/x4-s4one:$TAG .
 
-# docker push registry.kkops.cc/x4-s4one:$TAG
+## Start x4-s4one docker 
 if [ $? -eq 0 ];then
    echo -e "\e[1;32mBegin start NSME\e[0m"
 
@@ -46,6 +46,4 @@ if [ $? -eq 0 ];then
    echo -e "\e[1;31mBuild x4-s4one failed\e[0m"
    exit 2
 fi
-
-# docker run -d --name nsme -p3000:3000 -e DB_HOST=$(hostname -i) -e DB_NAME=X4DB -v /var/log/x4_s4one:/var/log/x4_s4one registry.kkops.cc/x4-s4one:$TAG
 
